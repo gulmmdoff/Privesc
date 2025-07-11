@@ -1,0 +1,175 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Google Fonts - JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply scrollbar-thin scrollbar-track-cyber-gray scrollbar-thumb-cyber-green;
+  }
+
+  body {
+    @apply bg-cyber-dark text-cyber-green font-mono antialiased;
+    background-image: 
+      radial-gradient(circle at 25% 25%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(0, 217, 255, 0.1) 0%, transparent 50%);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-gray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-green rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-blue;
+  }
+}
+
+@layer components {
+  .glitch-text {
+    position: relative;
+    color: theme('colors.cyber-green');
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    animation: glitch 0.3s infinite;
+    color: theme('colors.cyber-red');
+    z-index: -1;
+  }
+
+  .glitch-text::after {
+    animation: glitch 0.3s infinite reverse;
+    color: theme('colors.cyber-blue');
+    z-index: -2;
+  }
+
+  .terminal-window {
+    @apply bg-cyber-darker border border-cyber-green/30 rounded-lg overflow-hidden shadow-cyber;
+  }
+
+  .terminal-header {
+    @apply bg-cyber-gray px-4 py-2 flex items-center gap-2;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .terminal-content {
+    @apply p-4 font-mono text-sm;
+  }
+
+  .cyber-card {
+    @apply bg-cyber-gray/50 border border-cyber-green/20 rounded-lg p-6 
+           hover:border-cyber-green/40 hover:shadow-cyber transition-all duration-300
+           backdrop-blur-sm;
+  }
+
+  .cyber-button {
+    @apply bg-transparent border border-cyber-green text-cyber-green px-4 py-2 rounded
+           hover:bg-cyber-green hover:text-cyber-dark transition-all duration-200
+           font-mono text-sm;
+  }
+
+  .cyber-input {
+    @apply bg-cyber-dark border border-cyber-green/30 text-cyber-green px-4 py-2 rounded
+           focus:border-cyber-green focus:outline-none focus:ring-1 focus:ring-cyber-green/50
+           font-mono text-sm;
+  }
+
+  .nav-link {
+    @apply text-cyber-green/80 hover:text-cyber-green transition-colors duration-200
+           relative overflow-hidden;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-cyber-green transform scale-x-0
+           transition-transform duration-200 origin-left;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  .nav-link.active {
+    @apply text-cyber-green;
+  }
+
+  .nav-link.active::after {
+    @apply scale-x-100;
+  }
+
+  .typing-animation {
+    overflow: hidden;
+    border-right: 2px solid theme('colors.cyber-green');
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  .tag {
+    @apply bg-cyber-green/10 border border-cyber-green/30 text-cyber-green px-2 py-1 rounded-md
+           text-xs font-mono hover:bg-cyber-green/20 transition-colors duration-200;
+  }
+
+  .prose-cyber {
+    @apply prose prose-invert prose-green max-w-none;
+  }
+
+  .prose-cyber h1,
+  .prose-cyber h2,
+  .prose-cyber h3,
+  .prose-cyber h4,
+  .prose-cyber h5,
+  .prose-cyber h6 {
+    @apply text-cyber-green font-mono;
+  }
+
+  .prose-cyber code {
+    @apply bg-cyber-darker text-cyber-blue px-1 py-0.5 rounded text-sm;
+  }
+
+  .prose-cyber pre {
+    @apply bg-cyber-darker border border-cyber-green/30 rounded-lg;
+  }
+
+  .prose-cyber blockquote {
+    @apply border-l-4 border-cyber-blue text-cyber-blue/80;
+  }
+
+  .prose-cyber a {
+    @apply text-cyber-blue hover:text-cyber-green transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
